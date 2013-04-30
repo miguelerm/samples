@@ -1,0 +1,57 @@
+﻿@model MvcApplication.Entidades.Factura
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>Factura</legend>
+
+        <label>
+            <span>@Html.DisplayNameFor(model => model.Fecha)</span>
+            @Html.EditorFor(model => model.Fecha)
+        </label>
+        <label>
+            <span>@Html.DisplayNameFor(model => model.Nit)</span>
+            @Html.EditorFor(model => model.Nit)
+        </label>
+        <label>
+            <span>@Html.DisplayNameFor(model => model.ClienteNombre)</span>
+            @Html.EditorFor(model => model.ClienteNombre)
+        </label>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th><button type="submit" name="operacion" data-val="false" value="agregar-detalle">Agregar Detalle</button></th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model != null && Model.Detalle != null && Model.Detalle.Count > 0)
+            {
+                var i = 0;
+                foreach (var item in Model.Detalle)
+                {
+                    <tr>
+                        <td>@Html.DropDownList("Detalle[" + i + "].ProductoId", new SelectList(ViewBag.Productos, "Id", "Nombre", item.ProductoId))</td>
+                        <td>@Html.TextBox("Detalle[" + i + "].Precio", item.Precio)</td>
+                        <td>@Html.TextBox("Detalle[" + i + "].Cantidad", item.Cantidad)</td>
+                        <td><button type="submit" name="operacion" value="eliminar-detalle-@i" >Eliminar</button></td>
+                    </tr>
+                    i++;
+                }
+            }
+            </tbody>
+        </table>
+
+        <p>
+            <input type="submit" value="Crear" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
