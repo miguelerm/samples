@@ -1,0 +1,95 @@
+﻿@using MvcApplication.Extensions;
+@using MvcApplication.Entidades;
+@model Factura
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Factura</legend>
+
+        <label>
+            <span>@Html.DisplayNameFor(model => model.Fecha)</span>
+            @Html.EditorFor(model => model.Fecha)
+            @Html.ValidationMessageFor(model => model.Fecha)
+        </label>
+        <label>
+            <span>@Html.DisplayNameFor(model => model.Nit)</span>
+            @Html.EditorFor(model => model.Nit)
+            @Html.ValidationMessageFor(model => model.Nit)
+        </label>
+        <label>
+            <span>@Html.DisplayNameFor(model => model.ClienteNombre)</span>
+            @Html.EditorFor(model => model.ClienteNombre)
+            @Html.ValidationMessageFor(model => model.ClienteNombre)
+        </label>
+
+        <div>
+            <em data-bind="validationMessage: detalle"></em>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>
+                        <button data-bind="click: agregarDetalle">Agregar Detalle</button></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: detalle">
+                <tr>
+                    <td>
+                        <select required="required" data-bind="value: productoId, options: window.productos, optionsText: 'Nombre', optionsValue: 'Id', attr: { name: 'Detalle[' + $index() + '].ProductoId' }">
+                        </select>
+                        <em data-bind="validationMessage: productoId"></em>
+                    </td>
+                    <td>
+                        <input type="number" required="required" min="0" max="999999999" data-bind="value: precio, attr: { name: 'Detalle[' + $index() + '].Precio' }" />
+                        <em data-bind="validationMessage: precio"></em>
+                    </td>
+                    <td>
+                        <input type="number" required="required" min="0" max="999999999" data-bind="value: cantidad, attr: { name: 'Detalle[' + $index() + '].Cantidad' }" />
+                        <em data-bind="validationMessage: cantidad"></em>
+                    </td>
+                    <td>
+                        <button data-bind="click: $root.eliminarDetalle">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            <input type="submit" value="Crear" data-bind="enable: canCreate()" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al listado", "Index")
+</div>
+
+<script src="~/Scripts/jquery-2.0.0.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/knockout-2.2.1.js"></script>
+<script src="~/Scripts/knockout.validation.js"></script>
+<script src="~/Scripts/ViewModels/FacturaCreateViewModel.js"></script>
+
+<script>
+    // catálogo de productos que se utiliza para llenar el <select /> de productos de cada detalle
+    var productos = JSON.parse('@Html.Raw(Json.Encode(ViewBag.Productos))');
+
+    // viewModel con el que haremos el binding de nuestra vista.
+    var viewModel = new facturaViewModel();
+
+    // inicializamos la validación de knockout.
+    ko.validation.init({ insertMessages: false, parseInputAttributes: true });
+
+    // aplicamos el viewModel a nuestra vista.
+    ko.applyBindings(viewModel);
+</script>
