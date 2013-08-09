@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MvcApp.Models.Empresa>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Seleccionar usuario</legend>
+            <select name="usuario">
+                <option value="usuario1">usuario1</option>
+                <option value="usuario2">usuario2</option>
+                <option value="usuario3">usuario3</option>
+            </select>
+        </fieldset>
+        <div>
+            <button type="submit">Mostrar empresas</button>
+        </div>
+    }
+
+    @if(Model != null && Model.Count() > 0)
+    {
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+            </tr>
+    
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                </tr>
+            }
+    
+        </table>
+    }
+</body>
+</html>

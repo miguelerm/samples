@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://miguelerm.github.io/samples/serviciosweb" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://miguelerm.github.io/samples/serviciosweb" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://miguelerm.github.io/samples/serviciosweb">
+      <s:element name="ObtenerPorUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerPorUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerPorUsuarioResult" type="tns:ArrayOfEmpresa" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEmpresa">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Empresa" nillable="true" type="tns:Empresa" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Empresa">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuarios" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerPorUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerPorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerPorUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerPorUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioWebEmpresasSoap">
+    <wsdl:operation name="ObtenerPorUsuario">
+      <wsdl:input message="tns:ObtenerPorUsuarioSoapIn" />
+      <wsdl:output message="tns:ObtenerPorUsuarioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioWebEmpresasSoap" type="tns:ServicioWebEmpresasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerPorUsuario">
+      <soap:operation soapAction="http://miguelerm.github.io/samples/serviciosweb/ObtenerPorUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioWebEmpresasSoap12" type="tns:ServicioWebEmpresasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerPorUsuario">
+      <soap12:operation soapAction="http://miguelerm.github.io/samples/serviciosweb/ObtenerPorUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioWebEmpresas">
+    <wsdl:port name="ServicioWebEmpresasSoap" binding="tns:ServicioWebEmpresasSoap">
+      <soap:address location="http://localhost:51344/ServiciosWeb/ServicioWebEmpresas.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioWebEmpresasSoap12" binding="tns:ServicioWebEmpresasSoap12">
+      <soap12:address location="http://localhost:51344/ServiciosWeb/ServicioWebEmpresas.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
