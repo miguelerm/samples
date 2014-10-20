@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="pure-skin-mine">
+
+        <table class="pure-table">
+            <thead>
+                <tr>
+                    <th>Archivo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var archivo in ViewBag.Archivos)
+                {
+                    <tr>
+                        <td>@archivo</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <button type="button" class="pure-button pure-button-primary" id="btn-agregar">Agregar</button>
+        <form action="@Url.Action("CargarArchivos")" method="post" enctype="multipart/form-data">
+            <table class="pure-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Archivo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tbl-archivos"></tbody>
+            </table>
+            <button type="submit" class="pure-button">Cargar</button>
+        </form>
+    </div>
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>
