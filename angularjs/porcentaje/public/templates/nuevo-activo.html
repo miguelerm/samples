@@ -1,0 +1,29 @@
+<form name="vm.form" ng-submit="vm.aceptar()" novalidate="novalidate">
+    <div class="modal-header">
+        <h3 class="modal-title">Nuevo Activo</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group" ng-class="{ 'has-error': vm.invalid('codigo'), 'has-feedback': vm.invalid('codigo') }">
+            <label class="control-label">Código</label>
+            <input type="number" class="form-control" name="codigo" required="required" ng-model="vm.modelo.codigo" pattern="[0-9]+"></input>
+            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="vm.invalid('codigo')"></span>
+            <span class="label label-danger" ng-show="vm.invalid('codigo')">Debe ingresar un valor numérico sin decimales.</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': vm.invalid('nombre'), 'has-feedback': vm.invalid('nombre') }">
+            <label class="control-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" required="required" ng-model="vm.modelo.nombre"></input>
+            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="vm.invalid('nombre')"></span>
+            <span class="label label-danger" ng-show="vm.invalid('nombre')">Debe ingresar el nombre del activo.</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': vm.invalid('valor'), 'has-feedback': vm.invalid('valor') }">
+            <label class="control-label">Valor</label>
+            <input type="number" class="form-control" name="valor" required="required" ng-model="vm.modelo.valor"></input>
+            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="vm.invalid('valor')"></span>
+            <span class="label label-danger" ng-show="vm.invalid('valor')">Debe ingresar un valor para el activo.</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-disabled="vm.form.$invalid">Aceptar</button>
+        <button class="btn btn-warning" ng-click="vm.cancelar()">Cancelar</button>
+    </div>
+</form>
