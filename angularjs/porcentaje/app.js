@@ -7,6 +7,7 @@ app.use('/js/libs', express.static('bower_components/angular'));
 app.use('/js/libs', express.static('bower_components/angular-animate'));
 app.use('/js/libs', express.static('bower_components/angular-touch'));
 app.use('/js/libs', express.static('bower_components/angular-ui-bootstrap-bower'));
+app.use('/js/libs', express.static('bower_components/underscore'));
 
 app.use('/css', express.static('bower_components/angular-ui-bootstrap-bower'));
 app.use('/css', express.static('bower_components/bootstrap/dist/css'));

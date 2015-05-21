@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="/css/ui-bootstrap-csp.css" />
   <style type='text/css'>
     .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+    a { cursor: pointer; }
   </style>
   
 </head>
@@ -28,15 +29,17 @@
                         <th>Codigo</th>
                         <th>Nombre</th>
                         <th>Valor</th>
+                        <th>Valor Heredado</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in vm.activo">
-                        <td>{{ $index }}</td>
-                        <td>{{item.codigo}}</td>
-                        <td>{{item.nombre}}</td>
-                        <td>{{item.valor}}</td>
+                    <tr ng-repeat="item in vm.activos">
+                        <td ng-bind="$index + 1"></td>
+                        <td ng-bind="item.codigo"></td>
+                        <td ng-bind="item.nombre"></td>
+                        <td ng-bind="item.valor | currency: 'Q'"></td>
+                        <td ng-bind="item.valorHeredado | currency: 'Q'"></td>
                         <td></td>
                     </tr>
                 </tbody>
@@ -47,7 +50,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <span>Herederos</span> 
-            <button type="button" class="btn btn-primary btn-xs pull-right" ng-click="vm.nuevoHeredero()" ng-disabled="!vm.activo || !vm.activo.length">
+            <button type="button" class="btn btn-primary btn-xs pull-right" ng-click="vm.nuevoHeredero()" ng-disabled="!vm.activos || !vm.activos.length">
                 <i class="glyphicon glyphicon-plus"></i> Nuevo
             </button>
         </div>
@@ -64,11 +67,11 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in vm.herederos">
-                        <td>$index</td>
-                        <td>{{item.codigo}}</td>
-                        <td>{{item.nombre}}</td>
-                        <td>{{item.valor}}</td>
-                        <td></td>
+                        <td ng-bind="$index + 1"></td>
+                        <td ng-bind="item.nombre"></td>
+                        <td ng-bind="item.cantidadActivos"></td>
+                        <td ng-bind="item.montoActivos | currency: 'Q'"></td>
+                        <td><a ng-click="vm.eliminarHeredero(item)"><i class="glyphicon glyphicon-trash"></i></a></td>
                     </tr>
                 </tbody>
             </table>
@@ -76,6 +79,7 @@
     </div>
 </div>
 
+<script src="/js/libs/underscore-min.js"></script>
 <script src="/js/libs/angular.min.js"></script>
 <script src="/js/libs/angular-animate.min.js"></script>
 <script src="/js/libs/angular-touch.min.js"></script>
