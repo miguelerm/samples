@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirmaElectronica.Tests", "FirmaElectronica.Tests\FirmaElectronica.Tests.csproj", "{0FA03D22-9707-494D-927F-8D04A7C128F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirmaElectronica", "FirmaElectronica\FirmaElectronica.csproj", "{F469EBCB-7822-477E-8266-8B2979EDF91E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FA03D22-9707-494D-927F-8D04A7C128F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA03D22-9707-494D-927F-8D04A7C128F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA03D22-9707-494D-927F-8D04A7C128F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA03D22-9707-494D-927F-8D04A7C128F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F469EBCB-7822-477E-8266-8B2979EDF91E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F469EBCB-7822-477E-8266-8B2979EDF91E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F469EBCB-7822-477E-8266-8B2979EDF91E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F469EBCB-7822-477E-8266-8B2979EDF91E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
