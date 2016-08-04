@@ -88,6 +88,7 @@ namespace MvcApplication.Controllers
                 {
                     // este id posiblemente lo asigne tu base de datos.
                     factura.Id = facturas.Count > 0 ? facturas.Max(x => x.Id) + 1 : 1;
+                    facturas.Add(factura);
                     return true;
                 }
                 else
