@@ -80,6 +80,12 @@
     <Content Include="app\core\sidebar.template.html" />
     <Content Include="app\core\top-nav.directive.js" />
     <Content Include="app\core\top-nav.template.html" />
+    <Content Include="app\dashboard\dashboard-graph.directive.js" />
+    <Content Include="app\dashboard\dashboard-graph.template.html" />
+    <Content Include="app\dashboard\dashboard.directive.js" />
+    <Content Include="app\dashboard\dashboard.template.html" />
+    <Content Include="app\dashboard\top-tiles.directive.js" />
+    <Content Include="app\dashboard\top-tiles.template.html" />
     <Content Include="app\routes.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
