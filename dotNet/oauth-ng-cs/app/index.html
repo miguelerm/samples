@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" lang="es">
+<head>
+    <title ng-bind="$root.title">Cargando...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Content/font-awesome.css" rel="stylesheet" />
+    <link href="Content/custom.css" rel="stylesheet" />
+</head>
+<body class="nav-md">
+    <div ui-view="layout"></div>
+    <div ng-if="false">
+        Cargando...
+    </div>
+    <script src="Scripts/jquery-3.1.0.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-ui-router.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/core/home.controller.js"></script>
+    <script src="app/core/layout.controller.js"></script>
+    <script src="app/core/profile.directive.js"></script>
+    <script src="app/core/sidebar-footer.directive.js"></script>
+    <script src="app/core/sidebar-menu.directive.js"></script>
+    <script src="app/core/sidebar.directive.js"></script>
+    <script src="app/core/top-nav.directive.js"></script>
+</body>
+</html>
