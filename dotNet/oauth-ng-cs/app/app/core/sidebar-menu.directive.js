@@ -5,7 +5,9 @@
     function sidebarMenuDirective() {
         return {
             restrict: "E",
-            templateUrl: "app/core/sidebar-menu.template.html"
+            templateUrl: "app/core/sidebar-menu.template.html",
+            controller: "SidebarMenuController",
+            controllerAs: "vm"
         };
     }
 

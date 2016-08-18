@@ -72,6 +72,7 @@
     <Content Include="app\core\layout.template.html" />
     <Content Include="app\core\sidebar-footer.directive.js" />
     <Content Include="app\core\sidebar-footer.template.html" />
+    <Content Include="app\core\sidebar-menu.controller.js" />
     <Content Include="app\core\sidebar-menu.directive.js" />
     <Content Include="app\core\sidebar-menu.template.html" />
     <Content Include="app\core\profile.directive.js" />

@@ -5,6 +5,7 @@
 /// <reference path="../app/core/profile.directive.js" />
 /// <reference path="../app/core/sidebar.directive.js" />
 /// <reference path="../app/core/sidebar-footer.directive.js" />
+/// <reference path="../app/core/sidebar-menu.controller.js" />
 /// <reference path="../app/core/sidebar-menu.directive.js" />
 /// <reference path="../app/core/top-nav.directive.js" />
 /// <reference path="../app/dashboard/dashboard.directive.js" />
