@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "api\api.csproj", "{E98942C9-A3C7-4C6C-BC80-792A59469072}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "auth", "auth\auth.csproj", "{3A885E15-7B86-4142-977A-CECB07B93678}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app", "app\app.csproj", "{62173C8D-1AE4-4848-9AFA-8707D830A32C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E98942C9-A3C7-4C6C-BC80-792A59469072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E98942C9-A3C7-4C6C-BC80-792A59469072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E98942C9-A3C7-4C6C-BC80-792A59469072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E98942C9-A3C7-4C6C-BC80-792A59469072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A885E15-7B86-4142-977A-CECB07B93678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A885E15-7B86-4142-977A-CECB07B93678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A885E15-7B86-4142-977A-CECB07B93678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A885E15-7B86-4142-977A-CECB07B93678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62173C8D-1AE4-4848-9AFA-8707D830A32C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62173C8D-1AE4-4848-9AFA-8707D830A32C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62173C8D-1AE4-4848-9AFA-8707D830A32C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62173C8D-1AE4-4848-9AFA-8707D830A32C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
