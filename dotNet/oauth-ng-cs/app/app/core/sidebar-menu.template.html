@@ -1,21 +1,21 @@
 ﻿<div class="menu_section" ng-repeat="section in vm.sections">
     <h3 ng-bind="::section.text"></h3>
     <ul class="nav side-menu">
-        <li ng-repeat="item in ::section.items" ng-class="{ 'active' : vm.currentItem === item }">
-            <a ng-click="vm.currentItem = item">
+        <li ng-repeat="item in ::section.items" ng-class="{ 'active' : vm.isActive(item) }">
+            <a ng-click="vm.activate(item)">
                 <i class="fa" ng-class="::('fa-' + item.icon)"></i>
                 <span ng-bind="::item.text"></span>
-                <span ng-if="::(item.items && item.items.length)" class="fa fa-chevron-down"></span>
+                <span ng-if="::vm.hasChilds(item)" class="fa fa-chevron-down"></span>
                 <span ng-if="::item.label" class="label pull-right" ng-class="::('label-' + item.label.type)" ng-bind="::item.label.text"></span>
             </a>
-            <ul class="nav child_menu" ng-style="{ 'display': vm.currentItem === item ? 'block' : null}">
+            <ul class="nav child_menu" ng-style="{ 'display': vm.displayMode(item) }">
                 <li ng-repeat="subitem in ::item.items">
-                    <a ng-if="::(!subitem.items || !subitem.items.length)" ui-sref="{{::subitem.state}}" ng-bind="::subitem.text"></a>
-                    <a ng-if="::(subitem.items && subitem.items.length)">
+                    <a ng-if="::(!vm.hasChilds(subitem))" ui-sref="{{::subitem.state}}" ng-bind="::subitem.text"></a>
+                    <a ng-if="::vm.hasChilds(subitem)" ng-click="vm.activate(subitem)">
                         <span ng-bind="::subitem.text"></span>
                         <span class="fa fa-chevron-down"></span>
                     </a>
-                    <ul ng-if="::(subitem.items && subitem.items.length)" class="nav child_menu">
+                    <ul ng-if="::vm.hasChilds(subitem)" class="nav child_menu">
                         <li ng-repeat="subsubitem in ::subitem.items" ng-class="{ 'sub_menu': $index === 0 }">
                             <a ui-sref="{{::subsubitem.state}}" ng-bind="::subsubitem.text"></a>
                         </li>

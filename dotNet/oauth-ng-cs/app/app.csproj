@@ -67,13 +67,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\core\home.controller.js" />
     <Content Include="app\core\layout.controller.js" />
     <Content Include="app\core\layout.template.html" />
     <Content Include="app\core\sidebar-footer.directive.js" />
     <Content Include="app\core\sidebar-footer.template.html" />
     <Content Include="app\core\sidebar-menu.controller.js" />
     <Content Include="app\core\sidebar-menu.directive.js" />
+    <Content Include="app\core\sidebar-menu.service.js" />
+    <Content Include="app\core\sidebar-menu.specs.js" />
     <Content Include="app\core\sidebar-menu.template.html" />
     <Content Include="app\core\profile.directive.js" />
     <Content Include="app\core\profile.template.html" />
@@ -81,12 +82,11 @@
     <Content Include="app\core\sidebar.template.html" />
     <Content Include="app\core\top-nav.directive.js" />
     <Content Include="app\core\top-nav.template.html" />
-    <Content Include="app\dashboard\dashboard-graph.directive.js" />
-    <Content Include="app\dashboard\dashboard-graph.template.html" />
-    <Content Include="app\dashboard\dashboard.directive.js" />
-    <Content Include="app\dashboard\dashboard.template.html" />
-    <Content Include="app\dashboard\top-tiles.directive.js" />
-    <Content Include="app\dashboard\top-tiles.template.html" />
+    <Content Include="app\home\dashboard-graph.directive.js" />
+    <Content Include="app\home\dashboard-graph.template.html" />
+    <Content Include="app\home\dashboard.template.html" />
+    <Content Include="app\home\top-tiles.directive.js" />
+    <Content Include="app\home\top-tiles.template.html" />
     <Content Include="app\routes.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -96,6 +96,8 @@
     <Content Include="Content\custom.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\jasmine\jasmine.css" />
+    <Content Include="Content\jasmine\jasmine_favicon.png" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -120,7 +122,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="app\core\home.template.html" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -129,6 +130,10 @@
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jasmine\boot.js" />
+    <Content Include="Scripts\jasmine\console.js" />
+    <Content Include="Scripts\jasmine\jasmine-html.js" />
+    <Content Include="Scripts\jasmine\jasmine.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.js" />
@@ -144,6 +149,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\_references.js" />
+    <Content Include="specs.html" />
+    <Content Include="specs.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

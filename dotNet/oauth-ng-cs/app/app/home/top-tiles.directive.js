@@ -5,7 +5,7 @@
     function topTilesDirective() {
         return {
             restrict: "E",
-            templateUrl: "app/dashboard/top-tiles.template.html"
+            templateUrl: "app/home/top-tiles.template.html"
         };
     }
 

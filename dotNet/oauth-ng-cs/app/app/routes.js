@@ -3,7 +3,9 @@
     angular.module("app").config(configRoutes);
 
     function configRoutes($urlRouterProvider, $stateProvider) {
-        $urlRouterProvider.when('', '/');
+        $urlRouterProvider
+            .when("",  "/dashboard")
+            .when("/", "/dashboard");
 
         $stateProvider
             .state("default", {
@@ -18,11 +20,13 @@
                 }
             })
             .state("home", {
-                url: "/",
-                controller: "HomeController",
-                controllerAs: "vm",
-                templateUrl: "app/core/home.template.html",
+                abstract: true,
+                template: "<div ui-view />",
                 parent: "default"
+            })
+            .state("home.dashboard", {
+                url: "/dashboard",
+                templateUrl: "app/home/dashboard.template.html"
             });
     }
 

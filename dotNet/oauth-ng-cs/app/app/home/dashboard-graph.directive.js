@@ -5,7 +5,7 @@
     function dashboardGraphDirective() {
         return {
             restrict: "E",
-            templateUrl: "app/dashboard/dashboard-graph.template.html"
+            templateUrl: "app/home/dashboard-graph.template.html"
         };
     }
 
