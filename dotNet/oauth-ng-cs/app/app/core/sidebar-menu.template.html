@@ -1,15 +1,15 @@
 ﻿<div class="menu_section" ng-repeat="section in vm.sections">
     <h3 ng-bind="::section.text"></h3>
     <ul class="nav side-menu">
-        <li ng-repeat="item in ::section.items" ng-class="{ 'active' : vm.isActive(item) }">
-            <a ng-click="vm.activate(item)">
+        <li ng-repeat="item in ::section.items" ng-class="{ 'active': item.active }">
+            <a ng-click="vm.expand(item)">
                 <i class="fa" ng-class="::('fa-' + item.icon)"></i>
                 <span ng-bind="::item.text"></span>
                 <span ng-if="::vm.hasChilds(item)" class="fa fa-chevron-down"></span>
                 <span ng-if="::item.label" class="label pull-right" ng-class="::('label-' + item.label.type)" ng-bind="::item.label.text"></span>
             </a>
-            <ul class="nav child_menu" ng-style="{ 'display': vm.displayMode(item) }">
-                <li ng-repeat="subitem in ::item.items">
+            <ul class="nav child_menu" ng-style="{ 'display': item.expanded ? 'block' : null }">
+                <li ng-repeat="subitem in ::item.items" ng-class="{ 'active': subitem.active }">
                     <a ng-if="::(!vm.hasChilds(subitem))" ui-sref="{{::subitem.state}}" ng-bind="::subitem.text"></a>
                     <a ng-if="::vm.hasChilds(subitem)" ng-click="vm.activate(subitem)">
                         <span ng-bind="::subitem.text"></span>

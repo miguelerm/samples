@@ -23,11 +23,11 @@
                                 },
                                 {
                                     text: "Dashboard2",
-                                    state: "dashboard.two"
+                                    state: "home.dashboard-two"
                                 },
                                 {
                                     text: "Dashboard3",
-                                    state: "dashboard.three"
+                                    state: "home.dashboard-three"
                                 }
                             ]
                         },

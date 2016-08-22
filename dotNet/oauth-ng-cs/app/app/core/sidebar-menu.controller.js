@@ -2,65 +2,111 @@
 
     angular.module("app").controller("SidebarMenuController", SidebarMenuController);
 
-    function SidebarMenuController(sidebarMenuService) {
+    function SidebarMenuController(sidebarMenuService, $state, $rootScope, $log) {
         var vm = this;
 
-        vm.currentItem = null;
+        var lastCategory;
+        var lastLink;
+
         vm.sections = [];
 
-        vm.isActive = isActive;
-        vm.activate = activate;
+        vm.expand = expand;
         vm.hasChilds = hasChilds;
-        vm.displayMode = displayMode;
 
         init();
 
         function init() {
-            sidebarMenuService.getSections().then(loadSections);
+            var state = $state && $state.$current && $state.$current.name;
+            $log.debug('current state: ', state);
+            sidebarMenuService.getSections().then(function (result) {
+                loadSections(result);
+                setActive(state);
+            });
+            $rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
         }
 
-        function isActive(item) {
+        function expand(item) {
+            var shouldExpandItem = lastCategory !== item;
 
-            var current = vm.currentItem;
+            resetLastCategoryAndLink();
 
-            if (current === null) return false;
+            item.active = shouldExpandItem;
+            item.expanded = shouldExpandItem;
 
-            if (current === item) return true;
-            
-            var items = current.items;
+            if (shouldExpandItem) {
+                lastCategory = item;
+            } else {
+                lastCategory = null;
+            }
+        }
 
-            if (items && items.length) {
-                for (var i = 0; i < items.length; i++) {
-                    if (items[i] === item) return true;
-
-                    var subItems = items[i].items;
-
-                    if (subItems && subItems.length) {
-                        for (var j = 0; j < subItems.length; j++) 
-                            if (subItems[j] === item) return true;
-                    }
-                }
+        function resetLastCategoryAndLink() {
+            if (lastCategory) {
+                lastCategory.active = false;
+                lastCategory.expanded = false;
             }
 
-            return false;
-        }
-
-        function activate(item) {
-            vm.currentItem = isActive(item) ? null : item;
+            if (lastLink) {
+                lastLink.active = false;
+                lastLink = null;
+            }
         }
 
         function hasChilds(item) {
-            return item.items && item.items.length;
-        }
-
-        function displayMode(item) {
-            return vm.currentItem === item ? 'block' : null;
+            return !!(item.items && item.items.length);
         }
 
         function loadSections(sections) {
-
             vm.sections = sections;
+        }
 
+        function setActive(state) {
+
+            resetLastCategoryAndLink();
+
+            var sections = vm.sections;
+
+            if (!sections || !sections.length) return;
+
+            for (var i = 0; i < sections.length; i++) {
+                var categories = sections[i].items;
+                expandCategoryByState(categories, state);
+            }
+        }
+
+        function expandCategoryByState(categories, state) {
+
+            if (!categories || !categories.length) return;
+
+            for (var i = 0; i < categories.length; i++) {
+                var category = categories[i];
+                if (linksContainsState(category.items, state)) {
+                    category.active = true;
+                    category.expanded = true;
+                    lastCategory = category;
+                    return true;
+                }
+                
+            }
+        }
+
+        function linksContainsState(links, state) {
+            if (!links || !links.length) return;
+
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i];
+                if (link.state === state) {
+                    link.active = true;
+                    lastLink = link;
+                    return true;
+                }
+            }
+        }
+
+        function stateChangeSuccess(event, toState, toParams, fromState, fromParams) {
+            var state = toState && toState.name;
+            $log.debug('state changed to: ', state);
+            setActive(state);
         }
     }
 
