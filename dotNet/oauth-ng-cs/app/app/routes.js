@@ -1,5 +1,4 @@
 ﻿(function () {
-
     angular.module("app").config(configRoutes);
 
     function configRoutes($urlRouterProvider, $stateProvider) {
@@ -52,5 +51,4 @@
                 template: "<h1>Forms advanced</h1>"
             });
     }
-
 })();

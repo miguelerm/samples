@@ -1,5 +1,4 @@
 ﻿(function () {
-
     angular.module("app").directive("profile", profileDirective);
 
     function profileDirective() {
@@ -8,5 +7,4 @@
             templateUrl: "app/core/profile.template.html"
         };
     }
-
 })();

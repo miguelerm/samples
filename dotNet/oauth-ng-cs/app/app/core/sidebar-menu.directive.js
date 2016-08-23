@@ -1,5 +1,4 @@
 ﻿(function () {
-
     angular.module("app").directive("sidebarMenu", sidebarMenuDirective);
 
     function sidebarMenuDirective() {
@@ -10,5 +9,4 @@
             controllerAs: "vm"
         };
     }
-
 })();

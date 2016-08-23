@@ -1,5 +1,4 @@
 ﻿(function () {
-
     angular.module("app").service("sidebarMenuService", SidebarMenuService);
 
     function SidebarMenuService($q) {
@@ -8,7 +7,6 @@
         svc.getSections = getSections;
 
         function getSections() {
-
             return $q.resolve([
                 {
                     text: "General",
@@ -254,8 +252,4 @@
             ]);
         }
     }
-
-    
-
-
 })();

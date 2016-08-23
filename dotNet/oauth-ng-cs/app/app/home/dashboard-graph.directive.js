@@ -1,5 +1,4 @@
 ﻿(function () {
-
     angular.module("app").directive("dashboardGraph", dashboardGraphDirective);
 
     function dashboardGraphDirective() {
@@ -8,5 +7,4 @@
             templateUrl: "app/home/dashboard-graph.template.html"
         };
     }
-
 })();

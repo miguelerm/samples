@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="app" lang="es">
+<html lang="es">
 <head>
     <title ng-bind="$root.title">Cargando...</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,17 +11,21 @@
     <link href="Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="Content/font-awesome.css" rel="stylesheet" />
     <link href="Content/custom.css" rel="stylesheet" />
+    <script src="Scripts/oidc-client.js"></script>
+    <script src="app/auth.js"></script>
 </head>
 <body class="nav-md">
     <div ui-view="layout"></div>
     <div ng-if="false">
         Cargando...
     </div>
+
     <script src="Scripts/jquery-3.1.0.js"></script>
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular-ui-router.js"></script>
     <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+
     <script src="app/app.js"></script>
     <script src="app/routes.js"></script>
 
@@ -38,5 +42,8 @@
 
     <script src="app/home/top-tiles.directive.js"></script>
     <script src="app/home/dashboard-graph.directive.js"></script>
+    <script src="app/home/ping.directive.js"></script>
+
+    <script src="app/boot.js"></script>
 </body>
 </html>

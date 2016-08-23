@@ -1,5 +1,4 @@
 ﻿(function () {
-
     angular.module("app").directive("topNav", topNavDirective);
 
     function topNavDirective() {
@@ -8,5 +7,4 @@
             templateUrl: "app/core/top-nav.template.html"
         };
     }
-
 })();

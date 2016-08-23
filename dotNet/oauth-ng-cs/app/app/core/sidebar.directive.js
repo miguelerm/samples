@@ -1,5 +1,4 @@
 ﻿(function () {
-
     angular.module("app").directive("sidebar", sidebarDirective);
 
     function sidebarDirective() {
@@ -8,5 +7,4 @@
             templateUrl: "app/core/sidebar.template.html"
         };
     }
-
 })();

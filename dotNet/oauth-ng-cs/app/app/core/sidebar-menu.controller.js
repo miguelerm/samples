@@ -1,5 +1,4 @@
 ﻿(function () {
-
     angular.module("app").controller("SidebarMenuController", SidebarMenuController);
 
     function SidebarMenuController(sidebarMenuService, $state, $rootScope, $log) {
@@ -61,7 +60,6 @@
         }
 
         function setActive(state) {
-
             resetLastCategoryAndLink();
 
             var sections = vm.sections;
@@ -75,7 +73,6 @@
         }
 
         function expandCategoryByState(categories, state) {
-
             if (!categories || !categories.length) return;
 
             for (var i = 0; i < categories.length; i++) {
@@ -86,7 +83,6 @@
                     lastCategory = category;
                     return true;
                 }
-                
             }
         }
 
@@ -109,5 +105,4 @@
             setActive(state);
         }
     }
-
 })();

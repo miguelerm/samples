@@ -1,5 +1,4 @@
 ﻿(function () {
-
     angular.module("app").directive("topTiles", topTilesDirective);
 
     function topTilesDirective() {
@@ -8,5 +7,4 @@
             templateUrl: "app/home/top-tiles.template.html"
         };
     }
-
 })();

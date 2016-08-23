@@ -1,6 +1,4 @@
 ﻿describe("SidebarMenuController", function () {
-
-
     var createController;
 
     beforeEach(module("app"));
@@ -45,7 +43,6 @@
     });
 
     it("Al expandir una categoria, la categoría expandida se colapsa y el link se desactiva", function () {
-
         var data = ObtenerItemsFalsos();
         var ctrl = createController(data, "home.dashboard");
 
@@ -61,11 +58,9 @@
         expect(homeCategory.expanded).toBe(false);
         expect(homeCategory.active).toBe(false);
         expect(dashboardLink.active).toBe(false);
-
     });
 
     it("HasChilds retorna true para items con subitems y false en caso contrario", function () {
-
         var data = ObtenerItemsFalsos();
         var ctrl = createController(data, "home.dashboard");
 
@@ -77,11 +72,8 @@
 
         expect(ctrl.hasChilds(itemWithoutChildren)).toBe(false);
         expect(ctrl.hasChilds(itemWithChildern)).toBe(true);
-
     });
-
 });
-
 
 function ObtenerItemsFalsos() {
     return [

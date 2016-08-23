@@ -88,6 +88,9 @@
     <Content Include="app\home\top-tiles.directive.js" />
     <Content Include="app\home\top-tiles.template.html" />
     <Content Include="app\routes.js" />
+    <Content Include="app\auth.js" />
+    <Content Include="app\boot.js" />
+    <Content Include="check_session.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -127,6 +130,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="app\home\ping.directive.js" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -149,6 +153,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\oidc-client.js" />
+    <Content Include="Scripts\oidc-client.min.js" />
+    <Content Include="signedout.html" />
+    <Content Include="signin-renew.html" />
+    <Content Include="signin.html" />
     <Content Include="specs.html" />
     <Content Include="specs.js" />
     <Content Include="Web.config" />
