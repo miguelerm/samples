@@ -87,6 +87,11 @@
     <Content Include="app\home\dashboard.template.html" />
     <Content Include="app\home\top-tiles.directive.js" />
     <Content Include="app\home\top-tiles.template.html" />
+    <Content Include="app\mantenimientos\productos-crear.controller.js" />
+    <Content Include="app\mantenimientos\productos-crear.template.html" />
+    <Content Include="app\mantenimientos\productos-listado.controller.js" />
+    <Content Include="app\mantenimientos\productos-listado.template.html" />
+    <Content Include="app\mantenimientos\productos.servicio.js" />
     <Content Include="app\routes.js" />
     <Content Include="app\auth.js" />
     <Content Include="app\boot.js" />

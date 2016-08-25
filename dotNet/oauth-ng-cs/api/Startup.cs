@@ -1,4 +1,5 @@
 ﻿using IdentityServer3.AccessTokenValidation;
+using Newtonsoft.Json.Serialization;
 using Owin;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -27,6 +28,8 @@ namespace Api
             config.Routes.MapHttpRoute("default", "api/{controller}/{id}", new { Id = RouteParameter.Optional });
             config.EnableCors(new EnableCorsAttribute(appUrl, "*", "*"));
             config.Filters.Add(new AuthorizeAttribute());
+
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             app.UseWebApi(config);
         }

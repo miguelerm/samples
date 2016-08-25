@@ -1,0 +1,53 @@
+﻿<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Productos <small>mantenimiento</small></h3>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Listado de productos</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a ui-sref="mantenimientos.productos-crear"><i class="fa fa-plus"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                    <tr class="headings">
+                                        <th class="column-title">C&oacute;digo</th>
+                                        <th class="column-title">Nombre</th>
+                                        <th class="column-title">Existencia</th>
+                                        <th class="column-title">Precio Base</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr ng-repeat="producto in vm.productos">
+                                        <td ng-bind="::producto.codigo"></td>
+                                        <td ng-bind="::producto.nombre"></td>
+                                        <td ng-bind="::producto.existencia"></td>
+                                        <td ng-bind="::producto.precioBase"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
