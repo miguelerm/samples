@@ -9,6 +9,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Resources\database-schema.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\database-schema.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="dapper" Version="1.50.4" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Scrutor" Version="2.2.2" />

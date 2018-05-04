@@ -24,11 +24,18 @@ namespace Samples.CacheSample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IBooksRepository, BooksSqLiteRepository>();
+            services.AddTransient<DbSchema>();
+            services.AddTransient<IConnectionProvider, SqliteConnectionProvider>();
+            services.AddTransient<IBooksRepository, BooksSqliteRepository>();
             services.Decorate<IBooksRepository, BooksCachedRepository>();
 
+            services.AddLogging();
             services.AddMemoryCache();
             services.AddMvc();
+
+            services.Configure<SqliteOptions>(options => {
+                options.ConnectionString = Configuration.GetConnectionString("DefaultConnectionString");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +47,12 @@ namespace Samples.CacheSample
             }
 
             app.UseMvc();
+
+            using(var startupScope = app.ApplicationServices.CreateScope()) {
+                var schema = startupScope.ServiceProvider.GetRequiredService<DbSchema>();
+                schema.Crear();
+            }
+
         }
     }
 }
