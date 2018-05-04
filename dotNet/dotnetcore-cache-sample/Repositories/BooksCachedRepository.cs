@@ -10,8 +10,8 @@ namespace Samples.CacheSample.Repositories
         private readonly IBooksRepository repository;
         private readonly IMemoryCache cache;
         private readonly ILogger<BooksCachedRepository> logger;
-        private const string GetAllCacheKey = "BOOKS_GETALL";
-        private const string GetSingleCacheKeyPrefix = "BOOKS_GETSINGLE_";
+        private const string GetAllCacheKey = "BOOKS_ALL";
+        private const string GetSingleCacheKeyPrefix = "BOOKS_";
 
         public BooksCachedRepository(IBooksRepository repository, IMemoryCache cache, ILogger<BooksCachedRepository> logger)
         {
