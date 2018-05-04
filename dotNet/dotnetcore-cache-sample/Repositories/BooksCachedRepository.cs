@@ -1,26 +1,31 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 using Samples.CacheSample.Entities;
 
-namespace Samples.CacheSample.Repositories {
-    public class BooksCachedRepository: IBooksRepository
+namespace Samples.CacheSample.Repositories
+{
+    public class BooksCachedRepository : IBooksRepository
     {
         private readonly IBooksRepository repository;
         private readonly IMemoryCache cache;
-
+        private readonly ILogger<BooksCachedRepository> logger;
         private const string GetAllCacheKey = "BOOKS_GETALL";
         private const string GetSingleCacheKeyPrefix = "BOOKS_GETSINGLE_";
 
-        public BooksCachedRepository(IBooksRepository repository, IMemoryCache cache)
+        public BooksCachedRepository(IBooksRepository repository, IMemoryCache cache, ILogger<BooksCachedRepository> logger)
         {
             this.repository = repository;
             this.cache = cache;
+            this.logger = logger;
         }
 
         public int Add(string title, string author, int year)
         {
             var id = repository.Add(title, author, year);
-            if (id > 0) {
+            if (id > 0)
+            {
+                logger.LogDebug($"Clean cache: {GetAllCacheKey}");
                 cache.Remove(GetAllCacheKey);
             }
 
@@ -31,7 +36,9 @@ namespace Samples.CacheSample.Repositories {
         {
             var deleted = repository.Delete(id);
 
-            if (deleted) {
+            if (deleted)
+            {
+                logger.LogDebug($"Clean cache: {GetAllCacheKey} and {GetSingleCacheKeyPrefix + id}");
                 cache.Remove(GetAllCacheKey);
                 cache.Remove(GetSingleCacheKeyPrefix + id);
             }
@@ -42,7 +49,9 @@ namespace Samples.CacheSample.Repositories {
         public Book[] GetAll()
         {
             var cachedResult = cache.Get(GetAllCacheKey) as Book[];
-            if (cachedResult != null) {
+            if (cachedResult != null)
+            {
+                logger.LogDebug("Getting all books from cache");
                 return cachedResult;
             }
 
@@ -55,7 +64,9 @@ namespace Samples.CacheSample.Repositories {
         {
             var cacheKey = GetSingleCacheKeyPrefix + id;
             var cachedResult = cache.Get(cacheKey) as Book;
-            if (cachedResult != null) {
+            if (cachedResult != null)
+            {
+                logger.LogDebug($"Getting book {id} from cache");
                 return cachedResult;
             }
 
@@ -68,7 +79,9 @@ namespace Samples.CacheSample.Repositories {
         {
             var updated = repository.Update(id, title, author, year);
 
-            if (updated) {
+            if (updated)
+            {
+                logger.LogDebug($"Clean cache: {GetAllCacheKey} and {GetSingleCacheKeyPrefix + id}");
                 cache.Remove(GetAllCacheKey);
                 cache.Remove(GetSingleCacheKeyPrefix + id);
             }
@@ -79,7 +92,9 @@ namespace Samples.CacheSample.Repositories {
         public async Task<int> AddAsync(string title, string author, int year)
         {
             var id = await repository.AddAsync(title, author, year);
-            if (id > 0) {
+            if (id > 0)
+            {
+                logger.LogDebug($"Clean cache: {GetAllCacheKey}");
                 cache.Remove(GetAllCacheKey);
             }
 
@@ -90,7 +105,9 @@ namespace Samples.CacheSample.Repositories {
         {
             var updated = await repository.UpdateAsync(id, title, author, year);
 
-            if (updated) {
+            if (updated)
+            {
+                logger.LogDebug($"Clean cache: {GetAllCacheKey} and {GetSingleCacheKeyPrefix + id}");
                 cache.Remove(GetAllCacheKey);
                 cache.Remove(GetSingleCacheKeyPrefix + id);
             }
@@ -102,7 +119,9 @@ namespace Samples.CacheSample.Repositories {
         {
             var deleted = await repository.DeleteAsync(id);
 
-            if (deleted) {
+            if (deleted)
+            {
+                logger.LogDebug($"Clean cache: {GetAllCacheKey} and {GetSingleCacheKeyPrefix + id}");
                 cache.Remove(GetAllCacheKey);
                 cache.Remove(GetSingleCacheKeyPrefix + id);
             }
@@ -113,7 +132,9 @@ namespace Samples.CacheSample.Repositories {
         public async Task<Book[]> GetAllAsync()
         {
             var cachedResult = cache.Get(GetAllCacheKey) as Book[];
-            if (cachedResult != null) {
+            if (cachedResult != null)
+            {
+                logger.LogDebug("Getting all books from cache");
                 return cachedResult;
             }
 
@@ -126,7 +147,9 @@ namespace Samples.CacheSample.Repositories {
         {
             var cacheKey = GetSingleCacheKeyPrefix + id;
             var cachedResult = cache.Get(cacheKey) as Book;
-            if (cachedResult != null) {
+            if (cachedResult != null)
+            {
+                logger.LogDebug($"Getting book {id} from cache");
                 return cachedResult;
             }
 
