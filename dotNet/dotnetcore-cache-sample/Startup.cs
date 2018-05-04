@@ -25,9 +25,14 @@ namespace Samples.CacheSample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<DbSchema>();
+
             services.AddTransient<IConnectionProvider, SqliteConnectionProvider>();
             services.AddTransient<IBooksRepository, BooksSqliteRepository>();
             services.Decorate<IBooksRepository, BooksCachedRepository>();
+
+            services.AddTransient<IConnectionAsyncProvider, SqliteConnectionProvider>();
+            services.AddTransient<IBooksAsyncRepository, BooksSqliteAsyncRepository>();
+            services.Decorate<IBooksAsyncRepository, BooksCachedAsyncRepository>();
 
             services.AddLogging();
             services.AddMemoryCache();

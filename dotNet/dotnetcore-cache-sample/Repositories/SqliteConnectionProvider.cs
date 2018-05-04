@@ -4,7 +4,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Options;
 
 namespace Samples.CacheSample.Repositories {
-    public class SqliteConnectionProvider : IConnectionProvider
+    public class SqliteConnectionProvider : IConnectionProvider, IConnectionAsyncProvider
     {
         private readonly string connectionString;
 
